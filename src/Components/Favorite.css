@@ -1,4 +1,4 @@
-.additional-movies-container {
+.favorites-container {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
@@ -6,7 +6,7 @@
     padding: 20px;
 }
 
-.movies-addictional-cards {
+.favorite-card {
     flex: 0 0 calc(20% - 20px); /* 5 itens por linha, com gap de 20px */
     box-sizing: border-box;
     width: 200px;
@@ -16,12 +16,12 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-.movies-addictional-cards:hover {
+.favorite-card:hover {
     background-color: rgba(255, 255, 255, 0.2);
     transform: scale(1.05);
 }
 
-.movie-button {
+.favorite-movie-button {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -31,7 +31,7 @@
     cursor: pointer;
 }
 
-.movie-image-container img {
+.favorite-image-container img {
     width: 100%;
     height: auto;
 }
@@ -40,18 +40,4 @@ h3 {
     margin-top: 10px;
     font-size: 16px;
     color: #fff;
-}
-
-.favorite-icon {
-    position: absolute;
-    background-color: rgba(108, 107, 107, 0.5);
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-    border-color: red;
-}
-
-.favorite-icon img {
-    width: 25px;
-    height: 25px;
 }

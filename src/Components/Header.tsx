@@ -1,12 +1,15 @@
-import { Outlet } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Navigate from "../Components/Navigate";
+import logo from '../Images/logo.png';
 import './Header.css';
 
 function Header() {
 return (
     <div>
         <header>
-            <h1>MeuCine</h1>
+            <Link to="/">
+            <img src={logo} className="logo" alt="MeuCine"/>
+            </Link>
             <Navigate />
         </header>
         <Outlet />

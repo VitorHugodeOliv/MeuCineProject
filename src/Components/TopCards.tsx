@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import apiRequest from "../ApiRequest/Api";
+import apiRequest from "../Service/ApiRequest/Api";
 import { MovieType } from "../Type";
 import { useNavigate } from "react-router-dom";
 import './TopCards.css';
