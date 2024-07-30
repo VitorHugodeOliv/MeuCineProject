@@ -1,23 +1,38 @@
 import { useEffect, useState } from "react";
-import apiRequest from "../ApiRequest/Api";
+import apiRequestByPage from "../ApiRequest/ApiRequestByPage";
 import { MovieType } from "../Type";
 import { useNavigate } from "react-router-dom";
 import './Cards.css';
 
 function Cards() {
     const [movies, setMovies] = useState<MovieType[]>([]);
+    const [currentPage, setCurrentPage] = useState<number>(1);
     const navigate = useNavigate();
 
     useEffect(() => {
-        apiRequest().then((data) => {
-            const additionalMovies = data.results.slice(10);
+        apiRequestByPage(currentPage).then((data) => {
+            const additionalMovies = data.results;
+            console.log(additionalMovies)   
             setMovies(additionalMovies);
         })
-    }, []);
+    }, [currentPage]);
 
     const handleClick = (id: number) => {
         navigate(`/movie/${id}`);
     }
+
+    const handlePageChange = () => {
+        const newPage = currentPage + 1;
+        setCurrentPage(newPage);
+        console.log(currentPage)        
+    }
+
+    const handlePageChangeBack = () => {
+        const newPage = currentPage - 1;
+        setCurrentPage(newPage);
+        console.log(currentPage)
+    }
+
 
     return (
         <div className="additional-movies-container">
@@ -31,6 +46,8 @@ function Cards() {
                     </button>
                 </div>
             ))}
+            <button onClick={() => handlePageChangeBack()}>anterior</button>
+            <button onClick={() => handlePageChange()}>proxima</button>
         </div>
     )
 }
