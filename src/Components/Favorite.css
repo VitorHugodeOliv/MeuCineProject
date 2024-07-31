@@ -7,7 +7,7 @@
 }
 
 .favorite-card {
-    flex: 0 0 calc(20% - 20px); /* 5 itens por linha, com gap de 20px */
+    flex: 0 0 calc(20% - 20px);
     box-sizing: border-box;
     width: 200px;
     text-align: center;
@@ -40,4 +40,18 @@ h3 {
     margin-top: 10px;
     font-size: 16px;
     color: #fff;
+}
+
+.favorite-icon {
+    position: absolute;
+    background-color: rgba(108, 107, 107, 0.5);
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+    border-color: red;
+}
+
+.favorite-icon img {
+    width: 25px;
+    height: 25px;
 }

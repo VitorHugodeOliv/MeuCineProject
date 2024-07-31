@@ -10,6 +10,7 @@ import './Cards.css';
 function Cards() {
     const [movies, setMovies] = useState<MovieType[]>([]);
     const [currentPage, setCurrentPage] = useState<number>(1);
+    const [totalPages, setTotalPages] = useState<number>(10);
     const [favorites, setFavorites] = useState<MovieType[]>([]);
     const navigate = useNavigate();
 
@@ -24,6 +25,7 @@ function Cards() {
             const additionalMovies = data.results;
             console.log(additionalMovies)   
             setMovies(additionalMovies);
+            setTotalPages(data.total_pages);
         })
     }, [currentPage]);
 
@@ -42,17 +44,27 @@ function Cards() {
         }
     };
 
-    const handlePageChange = () => {
-        const newPage = currentPage + 1;
-        setCurrentPage(newPage);
-        console.log(currentPage)        
-    }
+    const handlePageChange = (page: number) => {
+        setCurrentPage(page);
+    };
 
-    const handlePageChangeBack = () => {
-        const newPage = currentPage - 1;
-        setCurrentPage(newPage);
-        console.log(currentPage)
-    }
+    const generatePageNumbers = () => {
+        const maxPagesToShow = 10;
+        let startPage = Math.max(currentPage - Math.floor(maxPagesToShow / 2), 1);
+        let endPage = startPage + maxPagesToShow - 1;
+
+        if (endPage > totalPages) {
+            endPage = totalPages;
+            startPage = Math.max(endPage - maxPagesToShow + 1, 1);
+        }
+
+        const pages = [];
+        for (let i = startPage; i <= endPage; i++) {
+            pages.push(i);
+        }
+
+        return pages;
+    };
 
 
     return (
@@ -71,8 +83,15 @@ function Cards() {
                     </button>
                 </div>
             ))}
-            <button onClick={() => handlePageChangeBack()}>anterior</button>
-            <button onClick={() => handlePageChange()}>proxima</button>
+                <div className="pagination">
+                <button disabled={currentPage === 1} onClick={() => handlePageChange(1)}>1</button>
+                {generatePageNumbers().map(page => (
+                    <button key={page} className={page === currentPage ? 'active' : ''} onClick={() => handlePageChange(page)}>
+                        {page}
+                    </button>
+                ))}
+                <button disabled={currentPage === totalPages} onClick={() => handlePageChange(totalPages)}>{totalPages}</button>
+            </div>
         </div>
     )
 }

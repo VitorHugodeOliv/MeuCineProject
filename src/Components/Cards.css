@@ -55,3 +55,28 @@ h3 {
     width: 25px;
     height: 25px;
 }
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    margin: 0 5px;
+    padding: 10px 15px;
+    border: 1px solid #212121;
+    background-color: #720c0c;
+    cursor: pointer;
+}
+
+.pagination button.active {
+    background-color: #2d2c2c0a;
+    color: white;
+    border-color: #007bff;
+}
+
+.pagination button:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+}

@@ -19,7 +19,7 @@ h3 {
 .card-background {
     display: flex;
     width: calc(100% * 2);
-    animation: scroll 60s linear infinite;
+    animation: scroll 15s alternate infinite;
 }
 
 .movies-card {
@@ -68,9 +68,9 @@ h3 {
 
 @keyframes scroll {
     0% {
-        transform: translateX(0);
+        transform: translateX(-10%);
     }
     100% {
-        transform: translateX(-100%);
+        transform: translateX(-80%);
     }
 }
